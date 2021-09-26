@@ -1,0 +1,37 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+     "title": "Melbourne housing",
+    "width": 500,
+    "height": 300,
+    "data": {
+      "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/week9%20homework/js/metro_melbourne.json",
+      "format": {
+        "type": "topojson",
+        "feature": "metro_melbourne"
+      }
+    },
+    "transform": [{
+      "lookup": "[0.1]",
+      "from": {
+        "data": {
+          "url": "https://github.com/Qianmiao2021/Fit3179/blob/main/week9%20homework/data/Melbourne_housing_FULL.csv"
+        },
+        "key": "Postcode",
+        "fields": ["Price"]
+      }
+      },
+      {"calculate": "datum.Active + 0.1", "as": "Active Cases"}
+    ],
+    "projection": {
+      "type": "albersUsa"
+    },
+    "mark": "geoshape",
+  
+    "encoding": {
+      "color": {
+        "field": "Price",
+        "type": "quantitative"
+      }
+    }
+  }
+  
