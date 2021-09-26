@@ -1,0 +1,24 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Melbourne housing",
+    "width": 800,
+    "height": 600,
+    "data": {
+      "url": "https://github.com/Qianmiao2021/Fit3179/blob/main/week9%20homework/js/vic_localities.json",
+      "format": {"type": "topojson", "feature": "vic_localities"}
+    },
+    "transform": [
+      {
+        "lookup": "properties.NAME",
+        "from": {
+          "data": {
+            "url": "https://github.com/Qianmiao2021/Fit3179/blob/main/week9%20homework/data/melb_data.csv"
+          },
+          "key": "Suburb",
+          "fields": ["Price"]
+        }
+      }
+    ],
+    "projection": {"type": "equirectangular"},
+    "mark": {"type": "geoshape"}
+  }
