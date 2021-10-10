@@ -1,32 +1,36 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": "container",
-    "height": 500,
-    "background":"aliceblue",
-    "title": "Melbourne pricing",
-    "projection": {  "parallels": [-16, -37], "rotate": [-145, 0, 0],"type": "transverseMercator"},
-    "layer": [
-      {
-        "data": {
-          "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/week9%20homework/js/metro_melbourne.json",
-          "format": {"type": "topojson", "feature": "metro_melbourne1"}
-        },
-        "mark": {"type": "geoshape", "fill": "lightblue"}
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 400,
+  "title": "Melbourne pricing",
+  "background":"aliceblue",
+  "projection": {
+    "parallels": [-16, -37],
+    "rotate": [-145, 0, 0],
+    "type": "conicEqualArea"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/week10/js/vic_localities.json",
+        "format": {"type": "topojson", "feature": "vic_localities"}
       },
-      {
-        "data": {
-          "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/week9%20homework/data/Melbourne_housing_FULL.csv"
-        },
-        "mark": {"type": "circle", "tooltip": {"content": "data"}},
-        "encoding": {
-          "longitude": {"field": "Longtitude", "type": "quantitative"},
-          "latitude": {"field": "Lattitude", "type": "quantitative"},
-          "color": {
-            "field": "Propertycount",
-            "type": "quantitative",
-            "scale": {"scheme": "oranges"}
-          }
+      "mark": {"type": "geoshape", "fill": "lightsteelblue", "stroke": "whitesmoke"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/week9%20homework/data/Melbourne_housing_FULL.csv"
+      },
+      "mark": {"type": "circle", "tooltip": {"content": "data"}},
+      "encoding": {
+        "longitude": {"field": "Longtitude", "type": "quantitative"},
+        "latitude": {"field": "Lattitude", "type": "quantitative"},
+        "color": {
+          "field": "Propertycount",
+          "type": "quantitative",
+          "scale": {"scheme": "oranges"}
         }
       }
-    ]
-  }
+    }
+  ]
+}
