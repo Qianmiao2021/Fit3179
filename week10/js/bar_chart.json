@@ -1,64 +1,77 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 600,
-    "height": 400,
-    "background":"aliceblue",
-    "title": "Property count rank in the suburb of Melbourne",
-    "data": {
-    "url":
-   "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/week9%20homework/data/Melbourne_housing_FULL.csv"
-    },
-   
-     "layer": [
-       {
-          "mark": {"type": "bar","tooltip": true},
-         "encoding": {
-           "color": {"field": "Suburb",
-           "scale": {"scheme": "accent"}},
-           "opacity": {
-             "condition": {"selection": "series", "value": 1},
-             "value": 0.4
-           }
-         },
-         "selection": {
-           "series": {
-             "type": "single",
-             "encodings": ["color"],
-             "on": "click",
-             "bind": "legend"
-           }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 400,
+  "background":"aliceblue",
+  "title": "Property count rank in the suburb of Melbourne",
+  "data": {
+  "url":
+ "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/week9%20homework/data/Melbourne_housing_FULL.csv"
+  },
+ 
+   "layer": [
+     {
+        "mark": {"type": "bar","tooltip": true},
+       "encoding": {
+         "color": {"field": "Suburb",
+         
+        
+        "title": "Suburb",
+        
+         "scale": {"scheme": "accent"}},
+         "opacity": {
+           "condition": {"selection": "series", "value": 1},
+           "value": 0.4
+         }
+       },
+       "selection": {
+         "series": {
+           "type": "single",
+           "encodings": ["color"],
+           "on": "click",
+           "bind": "legend"
          }
        }
-     ],
-   
-   "transform": [
-       {
-         "window": [{
-           "op": "dense_rank",
-           "as": "rank"
-         }],
-         "sort": [{ "field": "Propertycount"}]
-       }, {
-         "filter": "datum.rank <= 8"
-       }
-       
-     ],  
-   
-     "encoding": {
-        "x": {
-            "field": "Suburb",
-            "type": "nominal",
-            "title": "Suburb",
-              "sort": {"field": "Propertycount", "op": "sum", "order":"descending"}
-            },
-           
-        "y": {
-        "aggregate":"sum",
-    "field": "Propertycount",
-    "type": "quantitative",
-     "title": "Property count",
-     "axis": {"tickCount": 6},
-    "scale": {"type": "band", "domain": [1, 900000]}
+     },
+     {
+    "mark": {"type": "text", "align": "center", "baseline": "line-bottom"},
+    "encoding": {
+      "text": {
+        "field": "Suburb",
+        "type": "norminal"
+      }
     }
-   }
-   }
+  }
+   ],
+ 
+ "transform": [
+     {
+       "window": [{
+         "op": "dense_rank",
+         "as": "rank"
+       }],
+       "sort": [{ "field": "Propertycount"}]
+     }, {
+       "filter": "datum.rank <= 8"
+     }
+     
+   ],  
+ 
+   "encoding": {
+      "x": {
+          "field": "Suburb",
+          "type": "nominal",
+          "title": "Suburb",
+            "sort": {"field": "Propertycount", "op": "sum", "order":"descending"}
+          },
+         
+      "y": {
+      "aggregate":"sum",
+  "field": "Propertycount",
+  "type": "quantitative",
+   "title": "Property count",
+   "axis": {"tickCount": 6},
+  "scale": {"type": "band", "domain": [1, 900000]}
+  }
+ }
+ }
