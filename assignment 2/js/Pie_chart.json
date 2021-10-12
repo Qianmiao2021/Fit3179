@@ -1,0 +1,34 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 400,
+    "title": "Rooms",
+    "background": "aliceblue",
+     "transform": [
+       {
+         "window": [{
+           "op": "dense_rank",
+           "as": "rank"
+         }],
+         "sort": [{ "field": "Propertycount"}]
+       }, {
+         "filter": "datum.rank <= 5"
+       }
+         ],
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/week9%20homework/data/Melbourne_housing_FULL.csv"
+        },
+        "mark": {"type": "arc", "tooltip": {"content": "data"}},
+        "encoding": {
+          "theta": {"field": "Rooms", "type": "quantitative"},
+          "color": {"field": "Suburb", "type": "nominal"}
+        }
+      }
+  
+    ]
+       
+     
+   
+  }
