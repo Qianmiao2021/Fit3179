@@ -11,9 +11,6 @@ Room,Type,Year,Count
 4,House,2016,2191
 4,Unit,2016,22
 4,TownHouse,2016,129
-5,House,2016,454
-5,Unit,2016,3
-5,TownHouse,2016,3
 1,House,2017,34
 1,Unit,2017,348
 1,TownHouse,2017,9
@@ -26,9 +23,6 @@ Room,Type,Year,Count
 4,House,2017,3325
 4,Unit,2017,27
 4,TownHouse,2017,208
-5,House,2017,659
-5,Unit,2017,1
-5,TownHouse,2017,6
 1,House,2018,18
 1,Unit,2018,249
 1,TownHouse,2018,8
