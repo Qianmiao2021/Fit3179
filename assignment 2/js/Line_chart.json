@@ -1,0 +1,28 @@
+{
+
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+   
+    "width":800,
+   "background":"antiquewhite",
+    "description": "Trend of House Pricing.",
+   
+    "data": {"url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/assignment%202/data/Price_Date.csv"},
+   
+    "transform": [
+    {
+           "calculate": "timeParse(datum['Year'], '%d/%m/%y')",
+           "as": "Year"
+       }
+    ],
+   
+    "mark": {"type":"line", "tooltip":true},
+   
+    "encoding": {
+   
+    "x": {"field": "Year","timeUnit":"month", "type": "temporal"},
+   
+    "y": {"aggregate":"average","field": "Price", "type": "quantitative", "format":".2s"}
+   
+    }
+   
+   }

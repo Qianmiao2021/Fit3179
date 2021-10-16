@@ -1,0 +1,116 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "House price per suburb ",
+  "width": 600,
+  "height": 400,
+  "background": "antiquewhite",
+  "projection": {
+    "type": "equirectangular",
+    "center": {
+      "expr": "center_to"
+    }
+  },
+  "params": [
+    {
+      "name": "center_to",
+      "value": [
+        145,
+        -37.8
+      ]
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/assignment%202/js/map.json",
+        "format": {
+          "type": "topojson",
+          "feature": "choro_map"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "'Data is not available in ' + datum.properties.NAME",
+          "as": "note"
+        },
+        {
+          "filter": "datum.Year == 2016"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightgrey",
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "tooltip": {
+          "field": "note"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/assignment%202/data/median_house_price.csv"
+      },
+      "transform": [
+        {
+          "calculate": "upper(datum.Suburb)",
+          "as": "suburb_upper"
+        },
+        {
+          "lookup": "suburb_upper",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/assignment%202/js/map.json",
+              "format": {
+                "type": "topojson",
+                "feature": "choro_map"
+              }
+            },
+            "key": "properties.NAME"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#fff",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "shape": {
+          "field": "geo",
+          "type": "geojson"
+        },
+        "color": {
+          "field": "Price",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              400000,
+              2000000
+            ],
+            "scheme": "oranges"
+          },
+          "legend": {
+            "format": ".2s"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Suburb",
+            "type": "nominal",
+            "title": "Suburb"
+          },
+          {
+            "field": "Price",
+            "type": "quantitative",
+            "title": "Median Price",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "values": [
+      {"Type": "House", "House Sold": 7249, "Year": 2016},
+      {"Type": "Unit", "House Sold": 1701, "Year": 2016},
+      {"Type": "Townhouse", "House Sold": 833, "Year": 2016},
+      {"Type": "House", "House Sold": 10884, "Year": 2017},
+      {"Type": "Unit", "House Sold": 2440, "Year": 2017},
+      {"Type": "Townhouse", "House Sold": 1377, "Year": 2017},
+      {"Type": "House", "House Sold": 6732, "Year": 2018},
+      {"Type": "Unit", "House Sold": 1845, "Year": 2018},
+      {"Type": "Townhouse", "House Sold": 1002, "Year": 2018}
+    ]
+  },
+  "title": "House Type are being sold",
+  "background": "antiquewhite",
+  "vconcat": [
+    {
+      "transform": [{"filter": "datum.Year == 2017"}],
+      "selection": {
+        "highlight": {
+          "type": "single",
+          "fields": ["Type"],
+          "bind": "legend",
+          "on": "click"
+        }
+      },
+      "mark": {"type": "arc", "innerRadius": 55, "tooltip": true},
+      "encoding": {
+        "theta": {"field": "House Sold", "type": "quantitative", "format": ","},
+        "color": {
+          "field": "Type",
+          "scale": {
+            "domain": ["House","Townhouse" ,  "Unit"],
+            "range": ["#267794", "#8C9426 ", "#2D9426"]
+          }
+        },
+        "opacity": {
+          "condition": {"selection": "highlight", "value": 0.6},
+          "value": 0.2
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/assignment%202/data/room_house_sold.csv"
+      },
+      "mark": {"type": "bar", "tooltip": true},
+      "transform": [{"filter": "datum.Year == 2017"}],
+      "selection": {
+        "highlight": {
+          "type": "single",
+          "fields": ["Type"],
+          "bind": "legend",
+          "on": "click"
+        }
+      },
+      "encoding": {
+        "column": {
+          "field": "Room",
+          "type": "ordinal",
+          "spacing": 10,
+          "header": {"orient": "bottom"}
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "Count",
+          "title": "House Sold",
+          "format": ",",
+          "axis": {"grid": false}
+        },
+        "x": {"field": "Type", "axis": null},
+        "color": {
+          "field": "Type",
+          "scale": {
+            "domain": ["House","Townhouse" ,  "Unit"],
+            "range": ["#267794", "#8C9426 ", "#2D9426"]
+          }
+        },
+        "opacity": {
+          "condition": {"selection": "highlight", "value": 0.6},
+          "value": 0.2
+        }
+      },
+      "config": {"view": {"stroke": "transparent"}, "axis": {"domainWidth": 1}}
+    }
+  ]
+}

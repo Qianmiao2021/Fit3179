@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "title": "House Sold",
+  "background":"antiquewhite",
+  "width": {"step": 23},
+  "data": {
+    "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/assignment%202/data/room_house_sold.csv"
+  },
+  "mark": {"type": "bar", "tooltip": true},
+  "transform": [{"filter": "datum.Year == 2016"}],
+  "selection": {
+    "highlight": {
+      "type": "single",
+      "fields": ["Type"],
+      "bind": "legend",
+      "on": "click"
+    }
+  },
+  "encoding": {
+    "column": {
+      "field": "Room",
+      "type": "ordinal",
+      "spacing": 10,
+      "header": {"orient": "bottom"}
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "Count",
+      "title": "House Sold",
+      "format": ",",
+      "axis": {"grid": false}
+    },
+    "x": {"field": "Type", "axis": null},
+    "color": {
+      "field": "Type",
+            "scale": {
+        "domain": ["House", "Townhouse", "Unit"],
+        "range": ["#267794", "#8C9426 ", "#2D9426"]
+      }
+    },
+    "opacity": {
+      "condition": {"selection": "highlight", "value": 0.6},
+      "value": 0.2
+    }
+  },
+  "config": {"view": {"stroke": "transparent"}, "axis": {"domainWidth": 1}}
+}
