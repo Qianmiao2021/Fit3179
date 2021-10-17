@@ -13,10 +13,16 @@
       {"Type": "Townhouse", "House Sold": 1002, "Year": 2018}
     ]
   },
-  "title": "House Type are being sold",
+  
   "background": "antiquewhite",
+  "height":300,
+  "width":100,
+  
   "vconcat": [
     {
+      "height":300,
+      "width":250,
+ 
       "transform": [{"filter": "datum.Year == 2017"}],
       "selection": {
         "highlight": {
@@ -32,7 +38,7 @@
         "color": {
           "field": "Type",
           "scale": {
-            "domain": ["House","Townhouse" ,  "Unit"],
+            "domain": ["House", "Townhouse", "Unit"],
             "range": ["#267794", "#8C9426 ", "#2D9426"]
           }
         },
@@ -43,6 +49,8 @@
       }
     },
     {
+      "height":300,
+      "width":100,
       "data": {
         "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/assignment%202/data/room_house_sold.csv"
       },
@@ -74,7 +82,7 @@
         "color": {
           "field": "Type",
           "scale": {
-            "domain": ["House","Townhouse" ,  "Unit"],
+            "domain": ["House", "Townhouse", "Unit"],
             "range": ["#267794", "#8C9426 ", "#2D9426"]
           }
         },

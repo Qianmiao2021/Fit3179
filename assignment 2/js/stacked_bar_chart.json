@@ -8,7 +8,7 @@
     "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/assignment%202/data/room_house_sold.csv"
   },
   "mark": {"type": "bar", "tooltip": true},
-  "transform": [{"filter": "datum.Year == 2016"}],
+  "transform": [{"filter": "datum.Year == 201"}],
   "selection": {
     "highlight": {
       "type": "single",
