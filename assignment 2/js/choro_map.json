@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "House price per suburb ",
+  "title": "House price in different suburbs ",
   "width": 600,
   "height": 400,
   "background": "antiquewhite",

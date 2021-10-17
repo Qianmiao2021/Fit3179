@@ -9,7 +9,7 @@
     "transform": [
       {"calculate": "timeParse(datum['Year'], '%d/%m/%y')", "as": "Year"}
     ],
-    "mark": {"type": "line", "tooltip": true},
+    "mark": {"type": "line", "tooltip":true},
     "encoding": {
       "x": {
         "field": "Year",

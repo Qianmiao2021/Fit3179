@@ -3,7 +3,7 @@
   "width": 300,
   "height": 250,
   "background": "antiquewhite",
-  "title": "Top 5 suburbs that has highest Selling Price",
+  "title": "Top 5 suburbs that has Highest Selling Price",
   "data": {
     "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/assignment%202/data/median_house_price.csv"
   },

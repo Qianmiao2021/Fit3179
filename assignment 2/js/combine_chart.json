@@ -20,9 +20,9 @@
   
   "vconcat": [
     {
-      "height":300,
-      "width":250,
- 
+      "height":275,
+      "width":240,
+      "title":"House Types",
       "transform": [{"filter": "datum.Year == 2017"}],
       "selection": {
         "highlight": {
@@ -50,10 +50,11 @@
     },
     {
       "height":300,
-      "width":100,
+      "width":90,
       "data": {
         "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/assignment%202/data/room_house_sold.csv"
       },
+      "title":"Room vs House Sold",
       "mark": {"type": "bar", "tooltip": true},
       "transform": [{"filter": "datum.Year == 2017"}],
       "selection": {
