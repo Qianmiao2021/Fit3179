@@ -4,8 +4,19 @@
   "width": 600,
   "height": 400,
   "background": "antiquewhite",
-  "projection": {"type": "equirectangular", "center": {"expr": "center_to"}},
-  "params": [{"name": "center_to", "value": [145, -37.8]}],
+  "projection": {"type": "equirectangular", "center": {"expr": "center"},"scale": {"expr": "zoom_level"}},
+  "params": [{"name": "center", "value": [145, -37.8]},
+    {
+      "name": "zoom_level",
+      "value": 30000,
+      "bind": {
+        "input": "range",
+        "min": 25800,
+        "max": 60000,
+        "step": 100,
+        "name": "Zoom: "
+      }
+    }],
   "layer": [
     {
       "data": {
