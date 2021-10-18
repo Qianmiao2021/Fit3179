@@ -13,16 +13,14 @@
       {"Type": "Townhouse", "House Sold": 1002, "Year": 2018}
     ]
   },
-  
   "background": "antiquewhite",
-  "height":300,
-  "width":100,
-  
+  "height": 300,
+  "width": 100,
   "vconcat": [
     {
-      "height":235,
-      "width":240,
-      "title":"Property Types",
+      "height": 235,
+      "width": 240,
+      "title": "Property Types",
       "transform": [{"filter": "datum.Year == 2017"}],
       "selection": {
         "highlight": {
@@ -32,6 +30,8 @@
           "on": "click"
         }
       },
+      "layer": [
+        {
       "mark": {"type": "arc", "innerRadius": 55, "tooltip": true},
       "encoding": {
         "theta": {"field": "House Sold", "type": "quantitative", "format": ","},
@@ -47,14 +47,31 @@
           "value": 0.2
         }
       }
+        },
+    {
+       "mark": {"type": "text",  "dx":270, "dy":120, "align": "right", "baseline": "middle"},
+       "transform": [
+                {
+                  "window": [{"op": "rank", "as": "ranking"}],
+                  "sort": [{"field": "House Sold", "order": "descending"}]
+                },
+                {"filter": "datum.ranking == 1"},
+                {
+                  "calculate": "datum['Type'] +' has highest amount of property sold'",
+                  "as": "text_annotation"
+                }
+              ],
+      "encoding": {"text": {"field": "text_annotation"}}
+    }
+      ]
     },
     {
-      "height":260,
-      "width":90,
+      "height": 260,
+      "width": 90,
       "data": {
         "url": "https://raw.githubusercontent.com/Qianmiao2021/Fit3179/main/assignment%202/data/room_house_sold.csv"
       },
-      "title":"Room vs House Sold",
+      "title": "Room vs House Sold",
       "mark": {"type": "bar", "tooltip": true},
       "transform": [{"filter": "datum.Year == 2017"}],
       "selection": {
