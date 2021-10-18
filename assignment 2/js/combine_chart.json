@@ -21,7 +21,10 @@
       "height": 235,
       "width": 240,
       "title": "Property Types",
-      "transform": [{"filter": "datum.Year == 2017"}],
+
+      "layer": [
+        {
+                "transform": [{"filter": "datum.Year == 2017"}],
       "selection": {
         "highlight": {
           "type": "single",
@@ -30,8 +33,6 @@
           "on": "click"
         }
       },
-      "layer": [
-        {
       "mark": {"type": "arc", "innerRadius": 55, "tooltip": true},
       "encoding": {
         "theta": {"field": "House Sold", "type": "quantitative", "format": ","},
@@ -49,7 +50,7 @@
       }
         },
     {
-       "mark": {"type": "text",  "dx":270, "dy":120, "align": "right", "baseline": "middle"},
+       "mark": {"type": "text",  "dx":200, "dy":120, "align": "right", "baseline": "middle"},
        "transform": [
                 {
                   "window": [{"op": "rank", "as": "ranking"}],
@@ -57,7 +58,7 @@
                 },
                 {"filter": "datum.ranking == 1"},
                 {
-                  "calculate": "datum['Type'] +' has highest amount of property sold'",
+                  "calculate": "datum['Type'] +' has highest property sold'",
                   "as": "text_annotation"
                 }
               ],
